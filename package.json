@@ -1,6 +1,6 @@
 {
   "name": "@snae/n8n-nodes-puppeteer",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "n8n node for browser automation using Puppeteer (forked from drudge/n8n-nodes-puppeteer with dependency fix for n8n community node installer)",
   "license": "MIT",
   "homepage": "https://github.com/imsnae/n8n-nodes-puppeteer",
