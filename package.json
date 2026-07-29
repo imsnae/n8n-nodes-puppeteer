@@ -1,16 +1,16 @@
 {
-  "name": "n8n-nodes-puppeteer",
-  "version": "1.5.0",
-  "description": "n8n node for browser automation using Puppeteer",
+  "name": "@snae/n8n-nodes-puppeteer",
+  "version": "1.5.1",
+  "description": "n8n node for browser automation using Puppeteer (forked from drudge/n8n-nodes-puppeteer with dependency fix for n8n community node installer)",
   "license": "MIT",
-  "homepage": "https://github.com/drudge/n8n-nodes-puppeteer",
+  "homepage": "https://github.com/imsnae/n8n-nodes-puppeteer",
   "author": {
-    "name": "Nicholas Penree",
-    "email": "nick@penree.com"
+    "name": "snae",
+    "email": "horizonyume@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drudge/n8n-nodes-puppeteer.git"
+    "url": "git+https://github.com/imsnae/n8n-nodes-puppeteer.git"
   },
   "main": "index.js",
   "scripts": {
@@ -67,10 +67,13 @@
   },
   "dependencies": {
     "@n8n/vm2": "^3.9.25",
+    "fs-extra": "^10.0.0",
     "puppeteer": "^24.1.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-human-typing": "github:0x7357/puppeteer-extra-plugin-human-typing",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "puppeteer-extra-plugin-user-preferences": "^2.4.1"
+    "puppeteer-extra-plugin-user-data-dir": "^2.4.1",
+    "puppeteer-extra-plugin-user-preferences": "^2.4.1",
+    "rimraf": "^3.0.2"
   }
 }
