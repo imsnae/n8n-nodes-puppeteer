@@ -1,7 +1,19 @@
 name: Publish Package to npmjs
+
 on:
   release:
     types: [created]
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip npm publish)'
+        required: false
+        default: false
+        type: boolean
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -10,12 +22,24 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
-          node-version: "22.x"
-          registry-url: "https://registry.npmjs.org"
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
       - run: npm ci
       - run: npm run build
-      - run: npm publish --provenance --access public
+
+      - name: Publish to npm
+        if: ${{ !inputs.dry_run }}
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Dry run (no publish)
+        if: ${{ inputs.dry_run }}
+        run: |
+          echo "::notice::Dry run — build succeeded, skipping npm publish"
+          npm pack --dry-run
